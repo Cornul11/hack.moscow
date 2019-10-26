@@ -1,6 +1,5 @@
 from django.contrib.sessions.backends.db import SessionStore
 from django.shortcuts import render, redirect
-
 from database.models import Users, UsersInterests, Interests
 
 
