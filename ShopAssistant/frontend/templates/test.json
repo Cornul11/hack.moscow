@@ -1,0 +1,17 @@
+[
+    {
+"name": "Shop name",
+"category": "some category2",
+"description": "desc1",
+"location":   "lat",
+"floor": "3"
+},
+        {
+"name": "Shop name1",
+"category": "some category",
+"description": "desc1",
+"location": "lat",
+"floor":  "2"
+}
+
+]
