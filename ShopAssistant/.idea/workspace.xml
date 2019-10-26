@@ -2,35 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bee2e2eb-1da8-46b9-bb0f-50b1a32ac76b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/static/js/location.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/templates/collector.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopAssistant/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopAssistant/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopAssistant/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopAssistant/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/bootstrap-grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/bootstrap-grid.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/bootstrap-grid.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/bootstrap-grid.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/bootstrap-grid.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/bootstrap-reboot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/bootstrap-reboot.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/bootstrap-reboot.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/bootstrap-reboot.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/bootstrap.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/bootstrap.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/bootstrap.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/js/bootstrap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/bootstrap.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/bootstrap.bundle.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/bootstrap.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/js/bootstrap.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/bootstrap.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/js/bootstrap.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/registration/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ShopAssistant/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1597">
-              <caret line="44" column="15" lean-forward="true" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
+            <state relative-caret-position="529">
+              <caret line="44" column="15" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
               <folding>
                 <element signature="e#314#323#0" expanded="true" />
               </folding>
@@ -71,9 +43,7 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-358" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -83,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/registration/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="819">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -136,10 +106,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/registration/views.py" />
         <option value="$PROJECT_DIR$/registration/urls.py" />
         <option value="$PROJECT_DIR$/ShopAssistant/settings.py" />
         <option value="$PROJECT_DIR$/ShopAssistant/urls.py" />
+        <option value="$PROJECT_DIR$/registration/views.py" />
       </list>
     </option>
   </component>
@@ -151,7 +121,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="62" />
     <option name="y" value="23" />
     <option name="width" value="1341" />
@@ -173,18 +143,7 @@
             <path>
               <item name="ShopAssistant" type="b2602c69:ProjectViewProjectNode" />
               <item name="ShopAssistant" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ShopAssistant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ShopAssistant" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ShopAssistant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ShopAssistant" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ShopAssistant" type="b2602c69:ProjectViewProjectNode" />
@@ -264,15 +223,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572044549894</updated>
-      <workItem from="1572044551678" duration="5115000" />
+      <workItem from="1572044551678" duration="5812000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5115000" />
+    <option name="totallyTimeSpent" value="5812000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="62" y="23" width="1341" height="760" extended-state="0" />
+    <frame x="62" y="23" width="1341" height="760" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -317,16 +276,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/registration/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/registration/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -340,14 +289,19 @@
     <entry file="file://$PROJECT_DIR$/database/views.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-358" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/templates/collector.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-127" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ShopAssistant/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="44" column="15" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
+          <folding>
+            <element signature="e#314#323#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ShopAssistant/urls.py">
@@ -360,12 +314,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ShopAssistant/settings.py">
+    <entry file="file://$PROJECT_DIR$/database/models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1597">
-          <caret line="44" column="15" lean-forward="true" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
+        <state relative-caret-position="819">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
-            <element signature="e#314#323#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
