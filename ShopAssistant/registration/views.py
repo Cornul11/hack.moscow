@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
-from database.models import Users, UserInterests
+from database.models import Users, UsersInterests
 
 def register(request):
     user = Users.objects.create(name=request.POST['name'], age=request.POST['age'], password=request.POST['password'],
                                email=request.POST['email'], gender=request.POST['gender'])
     user.save()
     for i in request.POST['interests']:
-        inter = UserInterests.objects.create(email=request.POST['email'], interest=i)
+        inter = UsersInterests.objects.create(email=request.POST['email'], interest=i)
         inter.save()
     request.session['email'] = user.email
     return redirect('/success')
@@ -30,12 +30,5 @@ def login(request):
             context = {
                 "error": error
             }
-        return render(request, 'registration/autho.html', context)
+        return render(request, 'login.html', context)
 
-
-def gologin(request):
-    return render(request, 'registration/autho.html')
-
-
-def goregister(request):
-    return render(request, 'registration/registration.html')
