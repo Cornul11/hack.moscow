@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'registration',
     'frontend',
     'database',
+    'geolocation',
 ]
 
 MIDDLEWARE = [
