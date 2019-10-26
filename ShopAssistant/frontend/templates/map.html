@@ -17,15 +17,20 @@
     <link rel="stylesheet" type="text/css"
           href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"/>
 
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"
+            type="text/javascript" charset="utf-8"></script>
 
-
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-data.js"
+            type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-clustering.js"
+            type="text/javascript" charset="utf-8"></script>
 
 </head>
 <body>
 <div style="width: 640px; height: 480px" id="mapContainer"></div>
 <script>
 
-   // Initialize the platform object:
+    // Initialize the platform object:
     let platform = new H.service.Platform({
         apikey: 'l5jv713-_kdrN6l-2S16O8_lcgbpA9ucvH-pQ7QUDgQ',
         //useCIT: true,
@@ -50,13 +55,12 @@
     };
 
 
-
     let map = new H.Map(
         document.getElementById('mapContainer'),
         defaultLayers.vector.normal.map,
         {
             zoom: 10,
-            center: {lng:37.65427149997732 , lat: 55.709926999975146}
+            center: {lng: 37.65427149997732, lat: 55.709926999975146}
         });
 
 
@@ -113,23 +117,23 @@
     };
 
 
-    function setInteractive(map){
-  // get the vector provider from the base layer
-  var provider = map.getBaseLayer().getProvider();
+    function setInteractive(map) {
+        // get the vector provider from the base layer
+        var provider = map.getBaseLayer().getProvider();
 
-  // get the style object for the base layer
-  var style = provider.getStyle();
+        // get the style object for the base layer
+        var style = provider.getStyle();
 
-  var changeListener = (evt) => {
-    if (style.getState() === H.map.Style.State.READY) {
-      style.removeEventListener('change', changeListener);
+        var changeListener = (evt) => {
+            if (style.getState() === H.map.Style.State.READY) {
+                style.removeEventListener('change', changeListener);
 
-      // enable interactions for the desired map features
-      style.setInteractive(['places', 'places.populated-places'], true);
+                // enable interactions for the desired map features
+                style.setInteractive(['places', 'places.populated-places'], true);
+            }
+        };
+        style.addEventListener('change', changeListener);
     }
-  };
-  style.addEventListener('change', changeListener);
-}
 
 
     // Get an instance of the routing service:
@@ -145,10 +149,17 @@
 
     window.addEventListener('resize', () => map.getViewPort().resize());
 
-//Step 3: make the map interactive
-// MapEvents enables the event system
-// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
-    var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+    // Add map events functionality to the map
+    var mapEvents = new H.mapevents.MapEvents(map);
+
+    // Add behavior to the map: panning, zooming, dragging.
+    var behavior = new H.mapevents.Behavior(mapEvents);
+
+
+    //Step 3: make the map interactive
+    // MapEvents enables the event system
+    // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+    //var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
     // Create the default UI:
     let ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
@@ -157,36 +168,23 @@
     let mapSettings = ui.getControl('mapsettings');
     let scalebar = ui.getControl('scalebar');
 
-
-
-
-   // let behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-
+    // let behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
     mapSettings.setAlignment('top-left');
     zoom.setAlignment('top-left');
     scalebar.setAlignment('top-left');
 
-
-    let bubble = new H.ui.InfoBubble({lng:39.65427149997732 , lat: 55.709926999975146}, {
+    let bubble = new H.ui.InfoBubble({lng: 39.65427149997732, lat: 55.709926999975146}, {
         content: '<b>Ti pidor!</b>'
     });
 
     // Add info bubble to the UI:
     ui.addBubble(bubble);
 
-
-
-
     // Add event listener:
-    map.addEventListener('tap', function(evt) {
-      // Log 'tap' and 'mouse' events:
-        //
+    map.addEventListener('tap', function (evt) {
         console.log(evt.type, evt.currentPointer.type);
-
-
-
-});
+    });
 
 </script>
 </body>
