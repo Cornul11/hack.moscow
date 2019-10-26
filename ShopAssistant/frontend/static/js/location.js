@@ -1,7 +1,6 @@
 let startPos;
 let geoOptions = {
     enableHighAccuracy: true,
-    maximumAge: 60 * 1000, // get new position data every minute
 };
 
 let geoSuccess = function (position) {
@@ -28,12 +27,12 @@ let geoError = function (error) {
 
 x = document.getElementsByTagName('body');
 if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(geoSuccess);
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 } else {
     x.innerHTML = "Geolocation is not supported by this browser.";
 }
 
-window.setTimeout(function () {
+window.setInterval(function () {
         navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
     }, 30000
 );
