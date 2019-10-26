@@ -34,6 +34,21 @@ let geoSuccess = function (position) {
     console.log('updated pos');
     document.getElementById('startLat').innerHTML = startPos.coords.latitude;
     document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+    const url = 'http://localhost:8000/geostatus/post/';
+    const params = {
+        lon: startPos.coords.latitude,
+        lat: startPos.coords.longitude,
+    };
+    axios.defaults.xsrfCookieName = 'csrftoken';
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+    dataToSend = {lon: startPos.coords.longitude, lat: startPos.coords.latitude};
+    console.log(dataToSend);
+    axios({
+        method: 'post',
+        url: url + '?lon=' + startPos.coords.longitude + '&lat=' + startPos.coords.latitude,
+        data: ''
+    })
+        .then(data => console.log('sending: ', data))
 };
 let geoError = function (error) {
     console.log('Error occurred. Error code: ' + error.code);

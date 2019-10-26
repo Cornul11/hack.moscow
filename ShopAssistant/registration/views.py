@@ -1,34 +1,40 @@
 from django.shortcuts import render, redirect
-from database.models import Users, UsersInterests
+from database.models import Users, UsersInterests, Interests
 
 def register(request):
-    user = Users.objects.create(name=request.POST['name'], age=request.POST['age'], password=request.POST['password'],
-                               email=request.POST['email'], gender=request.POST['gender'])
+    user = Users.objects.create(name=request.POST['name'], email=request.POST['email'], age=request.POST['age'],
+                                gender=request.POST['gender'], password=request.POST['password'])
     user.save()
-    for i in request.POST['interests']:
-        inter = UsersInterests.objects.create(email=request.POST['email'], interest=i)
-        inter.save()
     request.session['email'] = user.email
+    return render(request, 'interests.html')
+
+
+def interests(request):
+    user = Users.objects.filter(email=request.session['email']).first()
+    for i in request.POST.getlist('interests'):
+        interest = Interests.objects.filter(name=i).first()
+        inter = UsersInterests(email=user, interest=interest)
+        inter.save()
     return redirect('/success')
 
 
+def gologin(request):
+    return render(request, 'login.html')
+
 def login(request):
-    error = ''
     if request.method == 'POST':
         if Users.objects.filter(email=request.POST['email']).exists():
             user = Users.objects.filter(email=request.POST['email'])[0]
             if request.POST['password'] == user.password:
                 request.session['email'] = user.email
-                redirect('/success')
-            else:
-                error = u'Неверно введен пароль. Попробуйте снова.'
-                context = {
-                    "error": error
-                }
-        else:
-            error = u'Такого логина не существует. Зарегистрируйтесь.'
-            context = {
-                "error": error
-            }
-        return render(request, 'login.html', context)
+                return redirect('/success')
 
+        return render(request, 'login.html')
+
+
+def success(request):
+    user = Users.objects.get(email=request.session['email'])
+    context = {
+        "user": user
+    }
+    return render(request, 'success.html', context)
