@@ -94,7 +94,7 @@ class Assistant(object):
     def form_user_imprint(self, content):
         return np.sum([self._get_vector(word) for word in content], axis=0) / len(content)
 
-    def compute_closeness(self, rhs, lhs):
+    def _compute_closeness(self, rhs, lhs):
         randomize_delta = 0.001
         denominator = norm(rhs) * norm(lhs)
         if denominator < 0.001:  # to make it more interesting
@@ -102,21 +102,25 @@ class Assistant(object):
         cos_sim = dot(rhs, lhs) / denominator
         return cos_sim
 
-    def compute_shops_closeness(self, user_imprint):
+    def _compute_shops_closeness(self, user_imprint):
         closeness = []
         for shop_imprint, shop in self.shops_imprints:
-            closeness.append((self.compute_closeness(shop_imprint, user_imprint), shop))
+            closeness.append((self._compute_closeness(shop_imprint, user_imprint), shop))
         closeness.sort(key=lambda x: -x[0])
         return closeness
 
     # user_imprint is a vector from word2vec
     # return json to send
-    def make_recommendation(self, user_imprint, count=3):
+    def make_recommendation(self, user_imprint, banned_shops=None, count=3):
         assert count > 0
+        banned_shops_set = set(banned_shops) if banned_shops is not None else {}
         resulted_shops = {}
-        closeness = self.compute_shops_closeness(user_imprint)
+        closeness = self._compute_shops_closeness(user_imprint)
         for distance, shop_candidate in closeness:
             if shop_candidate.name in resulted_shops:
+                continue
+            # remove banned shops
+            elif shop_candidate.name in banned_shops_set:
                 continue
             else:
                 resulted_shops[shop_candidate.name] = shop_candidate
