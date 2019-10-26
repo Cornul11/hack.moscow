@@ -9,11 +9,7 @@ let geoSuccess = function (position) {
     document.getElementById('startLat').innerHTML = startPos.coords.latitude;
     document.getElementById('startLon').innerHTML = startPos.coords.longitude;
     const url = 'https://8c93ad47.ngrok.io/geostatus/post/';
-    const params = {
-        lon: startPos.coords.latitude,
-        lat: startPos.coords.longitude,
-    };
-    dataToSend = {lon: startPos.coords.longitude, lat: startPos.coords.latitude};
+    let dataToSend = {lon: startPos.coords.longitude, lat: startPos.coords.latitude};
     axios({
         method: 'post',
         url: url + '?lon=' + startPos.coords.longitude + '&lat=' + startPos.coords.latitude,
@@ -37,5 +33,7 @@ if (navigator.geolocation) {
     x.innerHTML = "Geolocation is not supported by this browser.";
 }
 
-navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-let watchId = navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
+window.setTimeout(function () {
+        navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+    }, 30000
+);
