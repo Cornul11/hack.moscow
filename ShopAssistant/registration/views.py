@@ -21,6 +21,11 @@ def interests(request):
 def gologin(request):
     return render(request, 'login.html')
 
+
+def gosignup(request):
+    return render(request, 'signup.html')
+
+
 def login(request):
     if request.method == 'POST':
         if Users.objects.filter(email=request.POST['email']).exists():
