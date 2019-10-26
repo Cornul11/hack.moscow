@@ -1,4 +1,3 @@
-import json
 import requests
 
 
@@ -80,5 +79,4 @@ def get_full_model(app_id, app_code, signature, policy, key_pair_id, venue_id):
 
     response = requests.get(uri, params=params)
     assert response.status_code == 200
-    print(response.json())
     return response.json()
