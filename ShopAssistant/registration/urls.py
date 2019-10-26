@@ -1,4 +1,5 @@
 from django.urls import path
+
 from . import views
 
 urlpatterns = [
@@ -8,5 +9,6 @@ urlpatterns = [
     path('gosignup', views.gosignup),
     path('success', views.success),
     path('interests', views.interests),
-    path('signup', views.index)
+    path('signup', views.index),
 ]
+

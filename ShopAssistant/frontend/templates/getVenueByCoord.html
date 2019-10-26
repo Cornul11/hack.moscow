@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <title>Sample Page</title>
+    <script>
+        var headers = 'CORSH=' + encodeURIComponent(JSON.stringify(new Headers({
+            'X-Mashape-Key': 'API_KEY',
+            'Access-Control-Allow-Origin': '*'
+        })));
+        var url = 'https://image.maps.api.here.com/mia/1.6/routing?' + headers + '&app_id=wXErL6RzSi9vHsDkMm4u&app_code=oK6WOWkVHXT0fEPAY6fkdw&waypoint0=55.709926999975146,37.65427149997732&waypoint1=55.75470499996618,37.621492499991014&poix0=40.7499714,-73.9979574;00a3f2;00a3f2;11;.&poix1=40.7456827,-73.9954344;white;white;11;.&lc=1652B4&lw=6&t=0&ppi=320&w=400&h=600';
+        var options = {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default'
+        };
+        let request = new Request(url);
+
+        fetch(request, options).then((response) => {
+            response.arrayBuffer().then((buffer) => {
+                const base64Flag = 'data:image/jpeg;base64,';
+                const imageStr = arrayBufferToBase64(buffer);
+
+                document.querySelector('img').src = base64Flag + imageStr;
+            });
+        });
+
+        function arrayBufferToBase64(buffer) {
+            var binary = '';
+            var bytes = [].slice.call(new Uint8Array(buffer));
+
+            bytes.forEach((b) => binary += String.fromCharCode(b));
+
+            return window.btoa(binary);
+        }
+    </script>
+</head>
+<body>
+<h1>Sample Page</h1>
+<div id="someid">URL:
+    <img id="myUrl" src=""/>
+</div>
+</body>
+</html>
+

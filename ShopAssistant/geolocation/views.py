@@ -43,6 +43,7 @@ def index(request):
         request.session['user_imprint'] = response.json() if response else {}
         response = requests.post(url + 'recommendation', json=request.session['user_imprint'],
                                  headers={'content-type': 'application/json'})
+        print('response', response)
         return JsonResponse(response.json() if response else {})
     path = request.get_full_path()
     path = path.replace('/geostatus/post/?', '')
