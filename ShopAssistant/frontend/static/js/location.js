@@ -1,28 +1,3 @@
-/*
-
-button.onclick = function () {
-    let startPos;
-
-    let geoSuccess = function (position) {
-        // Do magic with location
-        startPos = position;
-        document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-        document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-    };
-    let geoError = function (error) {
-        switch (error.code) {
-            case error.TIMEOUT:
-                // The user didn't accept the callout
-                console.log('DENIED!');
-                break;
-        }
-    };
-
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-};
-*/
-button = document.getElementById("mainButton");
-
 let startPos;
 let geoOptions = {
     enableHighAccuracy: true,
@@ -54,6 +29,8 @@ let geoError = function (error) {
     //   2: position unavailable (error response from location provider)
     //   3: timed out
 };
+
+x = document.getElementsByTagName('body');
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(geoSuccess);
 } else {

@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
-from database.models import Users, UsersInterests, Interests
 from django.contrib.sessions.backends.db import SessionStore
+from django.shortcuts import render, redirect
+
+from database.models import Users, UsersInterests, Interests
 
 
 def register(request):
@@ -28,6 +29,10 @@ def gologin(request):
     return render(request, 'login.html')
 
 
+def gosignup(request):
+    return render(request, 'signup.html')
+
+
 def login(request):
     if request.method == 'POST':
         if Users.objects.filter(email=request.POST['email']).exists():
@@ -38,7 +43,7 @@ def login(request):
                 s['email'] = user.email
                 s.create()
                 return redirect('/success')
-        
+
         return render(request, 'login.html')
 
 
