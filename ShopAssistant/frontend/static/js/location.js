@@ -34,6 +34,22 @@ let geoSuccess = function (position) {
     console.log('updated pos');
     document.getElementById('startLat').innerHTML = startPos.coords.latitude;
     document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+    const url = 'fillin';
+    const params = {
+        lon: startPos.coords.latitude,
+        lat: startPos.coords.longitude,
+    };
+    axios({
+        method: 'post',
+        url: url,
+        data: {
+            params
+        }
+    })
+        .then(data=>console.log(data))
+        .catch(err=>console.log(err));
+
+
 };
 let geoError = function (error) {
     console.log('Error occurred. Error code: ' + error.code);
