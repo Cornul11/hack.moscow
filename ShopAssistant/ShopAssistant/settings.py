@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'database',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +76,12 @@ WSGI_APPLICATION = 'ShopAssistant.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dat5dojcg4ptlb',
+        'USER': 'xwbkkmlauwebgd',
+        'PASSWORD': 'aaf6916a61e45ccc92d0f785952e1b8cfbc31cf1167646ae00afb3d1cad4a225',
+        'HOST': 'ec2-50-19-222-129.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
