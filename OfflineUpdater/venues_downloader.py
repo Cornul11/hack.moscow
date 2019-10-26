@@ -31,6 +31,9 @@ class VenuesDownloader:
         self.signature = signature_tokens['Signature']
         self.policy = signature_tokens['Policy']
         self.key_pair_id = signature_tokens['Key-Pair-Id']
+        print(self.signature)
+        print(self.policy)
+        print(self.key_pair_id)
 
     def _set_signature_shadowed(self):
         self.signature = 'Orl-O0WFIrtGLJRWgxDSfvSR57CTaUbnCbzb~mr3h2Ww1Z-1VCFDeVGRmefLHi9Mhqwom8oNHmDd5ZBIO1GoktLjSZwYp8nivOw4KNtMdIferqFjfzh8Tsg~NC~nbqwAkpC0d1SpEobCOeyQlPUuA-wHFVxoeTdSltTfaAE3iT7MT6n-OJytxU3jWxSkQ0SZIopte-VEjLya43LpzSrFc3EogEHXQJaXCDqwvRESzYAEYslqfTOQOl4yabfZ3HA6my~ppndSKHTgkA1DS-Lsc-rJ7LGbcEZawMdG9EbtLxRiQwcvb3Ffy9zVvRuCAmOBdYSmy7ptxq9TAMDYFccg5A__'
@@ -41,11 +44,11 @@ class VenuesDownloader:
         venues = here_sdk.get_all_venues(self.app_id, self.app_code, self.signature, self.policy, self.key_pair_id)
         pickle.dump(venues, open('venues.pickle', 'wb'))
 
-    def dump_venue(self, filepath = 'venue.pickle'):
+    def dump_venue(self, filepath='venue.pickle'):
         venue = here_sdk.discovery_venue(self.app_id, self.app_code, VENUE_BB['ORYAD'])
         pickle.dump(venue, open(filepath, 'wb'))
 
-    def dump_to_tables(self, venue_info, shops, append = False):
+    def dump_to_tables(self, venue_info, shops, append=False):
         if not append:
             df_venue = pd.DataFrame([venue_info])
             df_shops = pd.DataFrame(shops)
@@ -61,25 +64,30 @@ class VenuesDownloader:
         return names.get('RST', names.get('ENG', names.get('RUS')))
 
     def collect_venue_info(self, venue_id, append = False):
-        venue = here_sdk.get_full_model(self.app_id, self.app_code, self.signature, self.policy, self.key_pair_id, venue_id)
+        # venue = here_sdk.get_full_model(self.app_id, self.app_code, self.signature, self.policy, self.key_pair_id, venue_id)
+
+        venue = pickle.load(open("full_model_gum.pickle", 'rb'))
+        print(venue)
+
         names = venue['content']['names']
 
         venue_info = {
             'venue_id': venue_id,
-            'id': venue['gml:id'],
-            'owner_id': venue['ownerID'],
-            'address': venue['address'],
-            'groundLevel': venue['groundLevel'],
-            'category': venue['content']['category']['id'],
-            'phone_number': venue['content']['phoneNumber'],
-            'email': venue['content']['website'],
+            'id': venue.get('gml:id'),
+            'owner_id': venue.get('ownerID'),
+            'address': venue.get('address'),
+            'groundLevel': venue.get('groundLevel'),
+            'category': venue.get('content').get('category').get('id'),
+            'phone_number': venue.get('content').get('phoneNumber'),
+            'email': venue.get('content').get('website'),
             'name': self.extract_appropriate_name(names),
-            'bb': venue['bb'],  # not csv
-            'centroid': venue['centroid']  # not csv
+            'bb': venue.get('bb'),
+            'centroid': venue.get('centroid')
         }
         shops = []
         for idx, level in enumerate(venue['levels']):
             for area in level['outerAreas']:
+                level_name = self.extract_appropriate_name(area['names'])
                 for space in area['spaces']:
                     if 'content' in space:
                         space_names = space['content']['names']
@@ -93,7 +101,9 @@ class VenuesDownloader:
                             'isClosed': space['isClosed'],
                             'bb': space['bb'],
                             'centroid': space['centroid'],
-                            'searchTags': '|'.join(space['content'].get('searchTags', []))
+                            'searchTags': '|'.join(space['content'].get('searchTags', [])),
+                            'level': venue_info.get('groundLevel', 0) + idx,
+                            'level_description': level_name
                         }
                         shops.append(shop)
         self.dump_to_tables(venue_info, shops, append)
