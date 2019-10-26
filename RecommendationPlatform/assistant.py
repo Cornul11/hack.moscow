@@ -14,7 +14,8 @@ class Shop(object):
         self.category = row['category'].replace('-', ' ')
         self.description = Shop.process_search_tags(row).replace('|', ', ')
         self.location = row['centroid']
-        self.floor = 'todo: implement'
+        self.level = row['level']
+        self.level_descr = row['level_description']
 
     def form_json(self):
         return {
@@ -22,7 +23,8 @@ class Shop(object):
             'category': self.category,
             'description': self.description,
             'location': self.location,
-            'floor': self.floor
+            'level': self.level,
+            'level_description': self.level_descr
         }
 
     @staticmethod
