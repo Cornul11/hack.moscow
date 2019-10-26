@@ -252,13 +252,14 @@
         </div>
         <div class="right">
             <div class="form">
-                <form method="GET" action="/home/lesslyrics/hack.moscow/ShopAssistant/frontend/templates/interests.html">
+                <form method="post" action="/register" class="form">
+                    {% csrf_token %}
                     <label for="name">Your name</label>
-                    <input type="name" id="name">
+                    <input type="name" id="name" name ="name">
                     <label for="email">Email</label>
-                    <input type="email" id="email">
+                    <input type="email" id="email" name="email">
                     <label for="age">Your age</label>
-                    <input type="age" id="age">
+                    <input type="age" id="age" name="age">
                     <label for="gender">Your gender</label>
                     <input type="radio" style=" border-radius: 50%;
                            width: 16px;
@@ -270,11 +271,11 @@
                            width: 16px;
                            height: 16px;" name="gender" value="other"> Other<br>
                     <label for="password">Create password</label>
-                    <input type="password" id="password">
+                    <input type="password" id="password" name="password">
 
                     <input type="submit" style=" background:transparent;font-size: 35px;" id="submit" value="Submit">
                 </form>
-                <button onclick="window.location.href='login.html'">Log in</button>
+                <button onclick="window.location.href='/gologin'">Log in</button>
             </div>
 
         </div>
