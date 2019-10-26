@@ -8,8 +8,9 @@ assistant = Assistant(update_shops=True)
 
 @app.route('/user_imprint', methods=['POST'])
 def get_user_imprint():
-    content = request.args.get('content')
-    user_imprint = assistant.form_user_imprint(content)
+    content = request.args.get('content', [])
+    fav_shops = request.args.get('fav_shops', [])
+    user_imprint = assistant.form_user_imprint(content, fav_shops)
     return jsonify({'user_imprint': user_imprint})
 
 

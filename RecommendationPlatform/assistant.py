@@ -5,6 +5,7 @@ from numpy.linalg import norm
 import pickle
 import logging
 import random
+import time
 
 
 class Shop(object):
@@ -44,32 +45,44 @@ class Assistant(object):
 
     def __init__(self, update_shops=True):
         self._w2v_size = 300
-        self.shops_imprints = []  # np vector -> shop
+        self.shops_imprints = []
+        self.shops_features = {}
         self._load_word2vec_model()
         self._get_shops_imprints(update_shops)
 
     def _get_shops_imprints(self, update_shops):
         if update_shops:
-            self.update_shops_imprints()
+            self._update_shops_imprints()
             self._dump_shop_imprints()
         else:
             self._load_shop_imprints()
+        self._get_shops_features()
+
+    def _get_shops_features(self):
+        for shop_imprint, shop in self.shops_imprints:
+            self.shops_features[shop.name] = shop_imprint
 
     def _load_word2vec_model(self):
+        debug = False
+        start_time = time.time()
+
         def get_coefs(word, *arr):
             return word, np.asarray(arr, dtype='float32')
 
-        # with open(self.W2V) as f:
-        #     self._word2vec = dict(get_coefs(*line.strip().split(' ')) for line in f)
-        with open(self.W2V) as f:
-            res = []
-            for line in f:
-                res.append(get_coefs(*line.strip().split(' ')))
-                if len(res) > 10000:
-                    break
-            self._word2vec = dict(res)
+        if not debug:
+            with open(self.W2V) as f:
+                self._word2vec = dict(get_coefs(*line.strip().split(' ')) for line in f)
+        else:
+            with open(self.W2V) as f:
+                res = []
+                for line in f:
+                    res.append(get_coefs(*line.strip().split(' ')))
+                    if len(res) > 10000:
+                        break
+                self._word2vec = dict(res)
 
-        logging.debug('word2vec loaded, size: {}'.format(len(self._word2vec)))
+        elapsed_time = time.time() - start_time
+        logging.error('_load_word2vec_model; word2vec loaded, size: {}, time: {}'.format(len(self._word2vec), elapsed_time))
 
     def _get_vector(self, words):
         if isinstance(words, str):
@@ -83,7 +96,7 @@ class Assistant(object):
         result += [self._get_vector(row['category'].split('-'))]
         return result
 
-    def update_shops_imprints(self):
+    def _update_shops_imprints(self):
         shops = pd.read_csv(self.SHOP_CSV)
         for _, row in shops.iterrows():
             key_vectors = self._extract_shops_key_vectors(row)
@@ -91,8 +104,17 @@ class Assistant(object):
                 self.shops_imprints.append((key_vector, Shop(row)))
 
     # content is a list of strings
-    def form_user_imprint(self, content):
-        return np.sum([self._get_vector(word) for word in content], axis=0) / len(content)
+    def form_user_imprint(self, content, fav_shops):
+        # easter egg :)
+        content = ['coffee'] if len(content) == 0 else content
+        start_time = time.time()
+        results = np.sum(
+            [self._get_vector(word) for word in content] +
+            [self.shops_features[shop] for shop in fav_shops], axis=0
+        ) / (len(content) + len(fav_shops))
+        elapsed_time = time.time() - start_time
+        logging.error('form_user_imprint; time: {}'.format(elapsed_time))
+        return results
 
     def _compute_closeness(self, rhs, lhs):
         randomize_delta = 0.001
@@ -112,6 +134,7 @@ class Assistant(object):
     # user_imprint is a vector from word2vec
     # return json to send
     def make_recommendation(self, user_imprint, banned_shops=None, count=3):
+        start_time = time.time()
         assert count > 0
         banned_shops_set = set(banned_shops) if banned_shops is not None else {}
         resulted_shops = {}
@@ -126,14 +149,16 @@ class Assistant(object):
                 resulted_shops[shop_candidate.name] = shop_candidate
                 if len(resulted_shops) >= count:
                     break
+        elapsed_time = time.time() - start_time
+        logging.error('make_recommendation; time: {}'.format(elapsed_time))
         return [shop.form_json() for shop in resulted_shops.values()]
 
 
 if __name__ == '__main__':
     assistant = Assistant()
 
-    content = ['pasta']
-    user_imprint = assistant.form_user_imprint(content)
+    content = ['pasta', 'football', 'hat', 'pomade']
+    user_imprint = assistant.form_user_imprint(content, [])
     results = assistant.make_recommendation(user_imprint, count=4)
     for result in results:
         print(result)
