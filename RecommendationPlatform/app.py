@@ -3,7 +3,7 @@ from assistant import Assistant
 
 
 app = Flask(__name__)
-assistant = Assistant()
+assistant = Assistant(update_shops=True)
 
 
 @app.route('/user_imprint', methods=['POST'])

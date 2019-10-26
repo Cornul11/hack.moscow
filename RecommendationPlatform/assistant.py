@@ -73,7 +73,7 @@ class Assistant(object):
 
     def _get_vector(self, words):
         if isinstance(words, str):
-            return self._word2vec.get(words, np.zeros(self._w2v_size, dtype='float32'))
+            return self._word2vec.get(words.lower(), np.zeros(self._w2v_size, dtype='float32'))
         return np.sum([self._get_vector(word) for word in words], axis=0) / len(words)
 
     def _extract_shops_key_vectors(self, row):
