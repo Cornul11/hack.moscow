@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location</title>
+    {% load static %}
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+</head>
+<body>
+<button id="mainButton" type="button" class="btn btn-primary">Primary</button>
+
+<p id="startLat">0</p><br>
+<p id="startLon">0</p>
+<!-- script at the end to load the page faster -->
+{% load static %}
+<script src="{% static "js/location.js" %}"></script>
+
+</body>
+</html>
