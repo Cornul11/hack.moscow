@@ -111,5 +111,5 @@ __pycache__/
 *$py.class
 
 # IntelliJ files
-.idea/
+**/.idea/
 *.iml
