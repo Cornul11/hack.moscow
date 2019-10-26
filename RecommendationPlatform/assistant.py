@@ -65,7 +65,7 @@ class Assistant(object):
             self.shops_features[shop.name] = shop_imprint
 
     def _load_word2vec_model(self):
-        debug = False
+        debug = True
         start_time = time.time()
 
         def get_coefs(word, *arr):
@@ -156,9 +156,11 @@ class Assistant(object):
         return [shop.form_json() for shop in resulted_shops.values()]
 
     def make_search(self, user_imprint, question, count=3):
+        alpha = 0.7
         words = question.lower().split(' ')
         qvector = self._get_vector(words)
-        return self.make_recommendation(qvector, banned_shops=[], count=count)
+        vec = qvector * alpha + user_imprint * (1. - alpha)
+        return self.make_recommendation(vec, banned_shops=[], count=count)
 
 
 if __name__ == '__main__':
