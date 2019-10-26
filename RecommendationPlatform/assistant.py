@@ -155,6 +155,11 @@ class Assistant(object):
         logging.error('make_recommendation; time: {}'.format(elapsed_time))
         return [shop.form_json() for shop in resulted_shops.values()]
 
+    def make_search(self, user_imprint, question, count=3):
+        words = question.lower().split(' ')
+        qvector = self._get_vector(words)
+        return self.make_recommendation(qvector, banned_shops=[], count=count)
+
 
 if __name__ == '__main__':
     assistant = Assistant()
