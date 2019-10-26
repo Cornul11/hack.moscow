@@ -1,0 +1,196 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #bbb9de;
+
+
+        }
+
+        .container {
+            max-width: 640px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 13px;
+
+        }
+
+        ul.ks-cboxtags {
+            list-style: none;
+            padding: 20px;
+        }
+
+        ul.ks-cboxtags li {
+            display: inline;
+        }
+
+        ul.ks-cboxtags li label {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, .9);
+            border: 2px solid rgba(139, 139, 139, .3);
+            color: #000000;
+            border-radius: 25px;
+            white-space: nowrap;
+            margin: 3px 0px;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            transition: all .2s;
+        }
+
+        ul.ks-cboxtags li label {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        ul.ks-cboxtags li label::before {
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 12px;
+            padding: 2px 6px 2px 2px;
+            content: "\f067";
+            transition: transform .3s ease-in-out;
+        }
+
+        ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+            content: "\f00c";
+            transform: rotate(-360deg);
+            transition: transform .3s ease-in-out;
+        }
+
+        ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+            border: 2px solid #2c2b34;
+            background-color: #3d3c48;
+            color: #fff;
+            transition: all .2s;
+        }
+
+        ul.ks-cboxtags li input[type="checkbox"] {
+            display: absolute;
+        }
+
+        ul.ks-cboxtags li input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        ul.ks-cboxtags li input[type="checkbox"]:focus + label {
+            border: 2px solid #e9a1ff;
+        }
+    </style>
+    <script>
+        var current = null;
+        document.querySelector('#email').addEventListener('focus', function (e) {
+            if (current) current.pause();
+            current = anime({
+                targets: 'path',
+                strokeDashoffset: {
+                    value: 0,
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                },
+                strokeDasharray: {
+                    value: '240 1386',
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                }
+            });
+        });
+        document.querySelector('#password').addEventListener('focus', function (e) {
+            if (current) current.pause();
+            current = anime({
+                targets: 'path',
+                strokeDashoffset: {
+                    value: -336,
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                },
+                strokeDasharray: {
+                    value: '240 1386',
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                }
+            });
+        });
+        document.querySelector('#submit').addEventListener('focus', function (e) {
+            if (current) current.pause();
+            current = anime({
+                targets: 'path',
+                strokeDashoffset: {
+                    value: -730,
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                },
+                strokeDasharray: {
+                    value: '530 1386',
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+
+
+    <div class="form">
+        <form method="GET" action="/interests/{checkboxOne}">
+            <ul class="ks-cboxtags">
+                <li><input type="checkbox" id="checkboxOne" value="Sport"><label for="checkboxOne">Sport</label></li>
+                <li><input type="checkbox" id="checkboxTwo" value="Jewelry"><label for="checkboxTwo">Jewelry</label>
+                </li>
+                <li><input type="checkbox" id="checkboxThree" value="Casual wear"><label for="checkboxThree">Casual
+                    wear</label></li>
+                <li><input type="checkbox" id="checkboxFour" value="Black tie"><label for="checkboxFour">Black
+                    tie</label></li>
+                <li><input type="checkbox" id="checkboxFive" value="Accessory"><label
+                        for="checkboxFive">Accessory</label></li>
+                <li><input type="checkbox" id="checkboxSix" value="Home wear"><label for="checkboxSix">Home wear</label>
+                </li>
+                <li><input type="checkbox" id="checkboxSeven" value="Kids' wear"><label for="checkboxSeven">Kids'
+                    wear</label></li>
+                <li><input type="checkbox" id="checkboxEight" value="Make-up"><label for="checkboxEight">Make-up</label>
+                </li>
+                <li><input type="checkbox" id="checkboxNine" value="Household equipment"><label for="checkboxNine">Household
+                    equipment</label></li>
+                <li><input type="checkbox" id="checkboxTen" value="Books"><label for="checkboxTen">Books</label></li>
+                <li><input type="checkbox" id="checkboxEleven" value="Barber shops"><label for="checkboxEleven">Barber
+                    shops</label></li>
+                <li><input type="checkbox" id="checkboxTwelve" value="Supermarket"><label for="checkboxTwelve">Supermarket</label>
+                </li>
+                <li><input type="checkbox" id="checkboxThirteen" value="Tobacconist"><label for="checkboxThirteen">Tobacconist</label>
+                </li>
+                <li><input type="checkbox" id="checkboxFourteen" value="Tech"><label for="checkboxFourteen">Tech</label>
+                </li>
+            </ul>
+            <input type="submit" style=" background:transparent;margin-left: 110px; font-size: 35px;" id="submit"
+                   value="Submit">
+        </form>
+    </div>
+
+</div>
+
+
+</body>
+</html>
