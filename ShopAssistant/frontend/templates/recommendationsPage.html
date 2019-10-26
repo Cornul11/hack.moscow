@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Airports</title>
+    <title>Recommendations</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta http-equiv="refresh" content="30"/>
+    <meta charset="utf-8">
 
-     <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
         var showData = new XMLHttpRequest();
-        var data = showData.open('GET', "http://127.0.0.1:5000/", true);
+        var data = showData.open('GET', "http://57aa68f1.ngrok.io/geostatus/", true);
+
         showData.onload = function(){
             data = JSON.parse(this.response);
             console.log(data);
@@ -26,19 +28,21 @@
             var l = 0;
             var table_body = '';
 
-            table_body += '<table width="100%"><thead><tr><th>';
-            table_body +=  data["name"];
-            table_body += '</th></tr></thead><tbody>';
-            table_body += '<tr>';
-            table_body += '<td>';
-            table_body += data["description"][0] + ' ';
-            table_body += data["description"][1] + ' </br>';
-            table_body += data["description"][2] +  '</br>';
+            for (k in data) {
+                table_body += '<table width="100%"><thead><tr><th>';
+                table_body += data[k]["name"];
+                table_body += '</th></tr></thead><tbody>';
+                table_body += '<tr>';
+                table_body += '<td>';
+                table_body += data[k]["description"][0] + ' ';
+                table_body += data[k]["description"][1] + ' </br>';
+                table_body += data[k]["description"][2] + '</br>';
 
-            table_body += '<a href="http://localhost:8000/recommendations/maps/' + data["location"][0] + '">view map</a>';
-            table_body += '</td>';
-            table_body += '</tr>';
-            table_body += '</tbody></table>';
+                table_body += '<a href="http://localhost:8000/recommendations/maps/' + data[k]["location"][0] + '">view map</a>';
+                table_body += '</td>';
+                table_body += '</tr>';
+                table_body += '</tbody></table>';
+            }
             $('#tableDiv').html(table_body);
             $("#search").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
@@ -59,7 +63,6 @@
     <div id="tableDiv" class="table table-dark table-hover" style="margin-top: 40px">
         Table will be generated here.
     </div>
-
 </div>
 <p id="p1"></p>
 </body>
