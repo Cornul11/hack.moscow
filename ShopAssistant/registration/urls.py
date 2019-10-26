@@ -8,4 +8,5 @@ urlpatterns = [
     path('gosignup', views.gosignup),
     path('success', views.success),
     path('interests', views.interests),
+    path('signup', views.index)
 ]

@@ -24,6 +24,9 @@ def interests(request):
     return redirect('/success')
 
 
+def index(request):
+    return render(request, 'signup.html')
+
 def gologin(request):
     return render(request, 'login.html')
 

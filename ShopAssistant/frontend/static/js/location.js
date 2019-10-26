@@ -7,7 +7,7 @@ let geoSuccess = function (position) {
     startPos = position;
     document.getElementById('startLat').innerHTML = startPos.coords.latitude;
     document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-    const url = 'https://8c93ad47.ngrok.io/geostatus/post/';
+    const url = 'https://57aa68f1.ngrok.io/geostatus/post/';
     let dataToSend = {lon: startPos.coords.longitude, lat: startPos.coords.latitude};
     axios({
         method: 'post',
