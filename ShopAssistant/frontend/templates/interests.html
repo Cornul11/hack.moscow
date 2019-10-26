@@ -2,8 +2,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-
-
         body,
         html {
             margin: 0;
@@ -16,15 +14,12 @@
             justify-content: center;
             height: 100vh;
             background-color: #bbb9de;
-
-
         }
 
         .container {
             max-width: 640px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 13px;
-
         }
 
         ul.ks-cboxtags {
@@ -152,46 +147,53 @@
 </head>
 <body>
 <div class="container">
-
-
     <div class="form">
         <form method="post" action="/interests">
             {% csrf_token %}
             <ul class="ks-cboxtags">
-                <li><input type="checkbox" id="checkboxOne" value="Sport" name="interests"><label for="checkboxOne">Sport</label></li>
+                <li><input type="checkbox" id="checkboxOne" value="Sport" name="interests"><label for="checkboxOne">Sport</label>
+                </li>
                 <li><input type="checkbox" id="checkboxTwo" value="Jewelry" name="interests"><label for="checkboxTwo">Jewelry</label>
                 </li>
-                <li><input type="checkbox" id="checkboxThree" value="Casual wear" name="interests"><label for="checkboxThree">Casual
+                <li><input type="checkbox" id="checkboxThree" value="Casual wear" name="interests"><label
+                        for="checkboxThree">Casual
                     wear</label></li>
-                <li><input type="checkbox" id="checkboxFour" value="Black tie" name="interests"><label for="checkboxFour">Black
+                <li><input type="checkbox" id="checkboxFour" value="Black tie" name="interests"><label
+                        for="checkboxFour">Black
                     tie</label></li>
                 <li><input type="checkbox" id="checkboxFive" value="Accessory" name="interests"><label
                         for="checkboxFive">Accessory</label></li>
-                <li><input type="checkbox" id="checkboxSix" value="Home wear" name="interests"><label for="checkboxSix">Home wear</label>
+                <li><input type="checkbox" id="checkboxSix" value="Home wear" name="interests"><label for="checkboxSix">Home
+                    wear</label>
                 </li>
-                <li><input type="checkbox" id="checkboxSeven" value="Kids wear" name="interests"><label for="checkboxSeven">Kids'
+                <li><input type="checkbox" id="checkboxSeven" value="Kids wear" name="interests"><label
+                        for="checkboxSeven">Kids'
                     wear</label></li>
-                <li><input type="checkbox" id="checkboxEight" value="Make-up" name="interests"><label for="checkboxEight">Make-up</label>
+                <li><input type="checkbox" id="checkboxEight" value="Make-up" name="interests"><label
+                        for="checkboxEight">Make-up</label>
                 </li>
-                <li><input type="checkbox" id="checkboxNine" value="Household equipment" name="interests"><label for="checkboxNine">Household
+                <li><input type="checkbox" id="checkboxNine" value="Household equipment" name="interests"><label
+                        for="checkboxNine">Household
                     equipment</label></li>
-                <li><input type="checkbox" id="checkboxTen" value="Books" name="interests"><label for="checkboxTen">Books</label></li>
-                <li><input type="checkbox" id="checkboxEleven" value="Barber shops" name="interests"><label for="checkboxEleven">Barber
+                <li><input type="checkbox" id="checkboxTen" value="Books" name="interests"><label for="checkboxTen">Books</label>
+                </li>
+                <li><input type="checkbox" id="checkboxEleven" value="Barber shops" name="interests"><label
+                        for="checkboxEleven">Barber
                     shops</label></li>
-                <li><input type="checkbox" id="checkboxTwelve" value="Supermarket" name="interests"><label for="checkboxTwelve">Supermarket</label>
+                <li><input type="checkbox" id="checkboxTwelve" value="Supermarket" name="interests"><label
+                        for="checkboxTwelve">Supermarket</label>
                 </li>
-                <li><input type="checkbox" id="checkboxThirteen" value="Tobacconist" name="interests"><label for="checkboxThirteen">Tobacconist</label>
+                <li><input type="checkbox" id="checkboxThirteen" value="Tobacconist" name="interests"><label
+                        for="checkboxThirteen">Tobacconist</label>
                 </li>
-                <li><input type="checkbox" id="checkboxFourteen" value="Tech" name="interests"><label for="checkboxFourteen">Tech</label>
+                <li><input type="checkbox" id="checkboxFourteen" value="Tech" name="interests"><label
+                        for="checkboxFourteen">Tech</label>
                 </li>
             </ul>
             <input type="submit" style=" background:transparent;margin-left: 110px; font-size: 35px;" id="submit"
                    value="Submit">
         </form>
     </div>
-
 </div>
-
-
 </body>
 </html>

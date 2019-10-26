@@ -1,207 +1,223 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SMy recommendations</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
     <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
-    <meta name="robots" content="noindex,follow" />
+    <meta name="robots" content="noindex,follow"/>
 
-      <style>
-          @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
 
-* {
-  box-sizing: border-box;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  margin: 0;
-  background-color: #7EC855;
-  font-family: 'Roboto', sans-serif;
-}
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            margin: 0;
+            background-color: #7EC855;
+            font-family: 'Roboto', sans-serif;
+        }
 
-.shopping-cart {
-  width: 750px;
-  height: 423px;
-  margin: 80px auto;
-  background: #FFFFFF;
-  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
-  border-radius: 6px;
+        .shopping-cart {
+            width: 750px;
+            height: 423px;
+            margin: 80px auto;
+            background: #FFFFFF;
+            box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
+            border-radius: 6px;
 
-  display: flex;
-  flex-direction: column;
-}
+            display: flex;
+            flex-direction: column;
+        }
 
-.title {
-  height: 60px;
-  border-bottom: 1px solid #E1E8EE;
-  padding: 20px 30px;
-  color: #5E6977;
-  font-size: 18px;
-  font-weight: 400;
-}
+        .title {
+            height: 60px;
+            border-bottom: 1px solid #E1E8EE;
+            padding: 20px 30px;
+            color: #5E6977;
+            font-size: 18px;
+            font-weight: 400;
+        }
 
-.item {
-  padding: 20px 30px;
-  height: 120px;
-  display: flex;
-}
+        .item {
+            padding: 20px 30px;
+            height: 120px;
+            display: flex;
+        }
 
-.item:nth-child(3) {
-  border-top:  1px solid #E1E8EE;
-  border-bottom:  1px solid #E1E8EE;
-}
+        .item:nth-child(3) {
+            border-top: 1px solid #E1E8EE;
+            border-bottom: 1px solid #E1E8EE;
+        }
 
-/* Buttons -  Delete and Like */
-.buttons {
-  position: relative;
-  padding-top: 30px;
-  margin-right: 60px;
-}
+        /* Buttons -  Delete and Like */
+        .buttons {
+            position: relative;
+            padding-top: 30px;
+            margin-right: 60px;
+        }
 
-.delete-btn {
-  display: inline-block;
-  cursor: pointer;
-  width: 18px;
-  height: 17px;
-  background: url("delete-icn.svg") no-repeat center;
-  margin-right: 20px;
-}
+        .delete-btn {
+            display: inline-block;
+            cursor: pointer;
+            width: 18px;
+            height: 17px;
+            background: url("delete-icn.svg") no-repeat center;
+            margin-right: 20px;
+        }
 
-.like-btn {
-  position: absolute;
-  top: 9px;
-  left: 15px;
-  display: inline-block;
-  background: url('twitter-heart.png');
-  width: 60px;
-  height: 60px;
-  background-size: 2900%;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
+        .like-btn {
+            position: absolute;
+            top: 9px;
+            left: 15px;
+            display: inline-block;
+            background: url('twitter-heart.png');
+            width: 60px;
+            height: 60px;
+            background-size: 2900%;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
 
-.is-active {
-  animation-name: animate;
-  animation-duration: .8s;
-  animation-iteration-count: 1;
-  animation-timing-function: steps(28);
-  animation-fill-mode: forwards;
-}
+        .is-active {
+            animation-name: animate;
+            animation-duration: .8s;
+            animation-iteration-count: 1;
+            animation-timing-function: steps(28);
+            animation-fill-mode: forwards;
+        }
 
-@keyframes animate {
-  0%   { background-position: left;  }
-  50%  { background-position: right; }
-  100% { background-position: right; }
-}
+        @keyframes animate {
+            0% {
+                background-position: left;
+            }
+            50% {
+                background-position: right;
+            }
+            100% {
+                background-position: right;
+            }
+        }
 
-/* Product Image */
-.image {
-  margin-right: 50px;
-}
+        /* Product Image */
+        .image {
+            margin-right: 50px;
+        }
 
-/* Product Description */
-.description {
-  padding-top: 10px;
-  margin-right: 60px;
-  width: 115px;
-}
+        /* Product Description */
+        .description {
+            padding-top: 10px;
+            margin-right: 60px;
+            width: 115px;
+        }
 
-.description span {
-  display: block;
-  font-size: 14px;
-  color: #43484D;
-  font-weight: 400;
-}
+        .description span {
+            display: block;
+            font-size: 14px;
+            color: #43484D;
+            font-weight: 400;
+        }
 
-.description span:first-child {
-  margin-bottom: 5px;
-}
-.description span:last-child {
-  font-weight: 300;
-  margin-top: 8px;
-  color: #86939E;
-}
+        .description span:first-child {
+            margin-bottom: 5px;
+        }
 
-/* Product Quantity */
-.quantity {
-  padding-top: 20px;
-  margin-right: 60px;
-}
-.quantity input {
-  -webkit-appearance: none;
-  border: none;
-  text-align: center;
-  width: 32px;
-  font-size: 16px;
-  color: #43484D;
-  font-weight: 300;
-}
+        .description span:last-child {
+            font-weight: 300;
+            margin-top: 8px;
+            color: #86939E;
+        }
 
-button[class*=btn] {
-  width: 30px;
-  height: 30px;
-  background-color: #E1E8EE;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-}
-.minus-btn img {
-  margin-bottom: 3px;
-}
-.plus-btn img {
-  margin-top: 2px;
-}
-button:focus,
-input:focus {
-  outline:0;
-}
+        /* Product Quantity */
+        .quantity {
+            padding-top: 20px;
+            margin-right: 60px;
+        }
 
-/* Total Price */
-.total-price {
-  width: 83px;
-  padding-top: 27px;
-  text-align: center;
-  font-size: 16px;
-  color: #43484D;
-  font-weight: 300;
-}
+        .quantity input {
+            -webkit-appearance: none;
+            border: none;
+            text-align: center;
+            width: 32px;
+            font-size: 16px;
+            color: #43484D;
+            font-weight: 300;
+        }
 
-/* Responsive */
-@media (max-width: 800px) {
-  .shopping-cart {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-  }
-  .item {
-    height: auto;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .image img {
-    width: 50%;
-  }
-  .image,
-  .quantity,
-  .description {
-    width: 100%;
-    text-align: center;
-    margin: 6px 0;
-  }
-  .buttons {
-    margin-right: 20px;
-  }
-}
+        button[class*=btn] {
+            width: 30px;
+            height: 30px;
+            background-color: #E1E8EE;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+        }
 
-      </style>
- <script>
+        .minus-btn img {
+            margin-bottom: 3px;
+        }
+
+        .plus-btn img {
+            margin-top: 2px;
+        }
+
+        button:focus,
+        input:focus {
+            outline: 0;
+        }
+
+        /* Total Price */
+        .total-price {
+            width: 83px;
+            padding-top: 27px;
+            text-align: center;
+            font-size: 16px;
+            color: #43484D;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .shopping-cart {
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+            }
+
+            .item {
+                height: auto;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .image img {
+                width: 50%;
+            }
+
+            .image,
+            .quantity,
+            .description {
+                width: 100%;
+                text-align: center;
+                margin: 6px 0;
+            }
+
+            .buttons {
+                margin-right: 20px;
+            }
+        }
+
+    </style>
+    <
+    <script>
         var showData = new XMLHttpRequest();
         var data;
         showData.open('GET', "http://127.0.0.1:5000/", true);
@@ -216,27 +232,27 @@ input:focus {
 
             var k = 0;
             var l = 0;
-            <div class="item">
-        <div class="buttons">
-          <span class="delete-btn"></span>
-          <span class="like-btn"></span>
-        </div>
-
-        <div class="description">
-          <span>Common Projects</span>
-          <span>Bball High</span>
-          <span>White</span>
-        </div>
-
-        <div class="quantity">
-          <button class="plus-btn" type="button" name="button">
-            <img src="plus.svg" alt="" />
-          </button>
-          <input type="text" name="name" value="1">
-          <button class="minus-btn" type="button" name="button">
-            <img src="minus.svg" alt="" />
-          </button>
-        </div>
+            {#    <div class="item">#}
+            {#<div class="buttons">#}
+            {#  <span class="delete-btn"></span>#}
+            {#  <span class="like-btn"></span>#}
+            {#</div>#}
+            {##}
+            {#<div class="description">#}
+            {#  <span>Common Projects</span>#}
+            {#  <span>Bball High</span>#}
+            {#  <span>White</span>#}
+            {#</div>#}
+            {##}
+            {#<div class="quantity">#}
+            {#  <button class="plus-btn" type="button" name="button">#}
+            {#    <img src="plus.svg" alt="" />#}
+            {#  </button>#}
+            {#  <input type="text" name="name" value="1">#}
+            {#  <button class="minus-btn" type="button" name="button">#}
+            {#    <img src="minus.svg" alt="" />#}
+            {#  </button>#}
+            {#</div>#}
             var table_body = '<table width="100%"><thead><tr><th>Store</th><th>Desctiption</th><th>Floor</th></tr></thead><tbody>';
             {#for(k in data){#}
             table_body += '<tr>';
@@ -275,136 +291,136 @@ input:focus {
         ;
     </script>
 </head>
-  <body>
+<body>
 
-    <div class="shopping-cart">
-      <!-- Title -->
-      <div class="title">
+<div class="shopping-cart">
+    <!-- Title -->
+    <div class="title">
         My recommendations
-      </div>
+    </div>
 
-      <!-- Product #1 -->
-      <div class="item">
+    <!-- Product #1 -->
+    <div class="item">
         <div class="buttons">
-          <span class="delete-btn"></span>
-          <span class="like-btn"></span>
+            <span class="delete-btn"></span>
+            <span class="like-btn"></span>
         </div>
 
         <div class="description">
-          <span>Common Projects</span>
-          <span>Bball High</span>
-          <span>White</span>
+            <span>Common Projects</span>
+            <span>Bball High</span>
+            <span>White</span>
         </div>
 
         <div class="quantity">
-          <button class="plus-btn" type="button" name="button">
-            <img src="plus.svg" alt="" />
-          </button>
-          <input type="text" name="name" value="1">
-          <button class="minus-btn" type="button" name="button">
-            <img src="minus.svg" alt="" />
-          </button>
+            <button class="plus-btn" type="button" name="button">
+                <img src="plus.svg" alt=""/>
+            </button>
+            <input type="text" name="name" value="1">
+            <button class="minus-btn" type="button" name="button">
+                <img src="minus.svg" alt=""/>
+            </button>
         </div>
 
         <div class="total-price">$549</div>
-      </div>
+    </div>
 
-      <!-- Product #2 -->
-      <div class="item">
+    <!-- Product #2 -->
+    <div class="item">
         <div class="buttons">
-          <span class="delete-btn"></span>
-          <span class="like-btn"></span>
+            <span class="delete-btn"></span>
+            <span class="like-btn"></span>
         </div>
 
         <div class="image">
-          <img src="item-2.png" alt=""/>
+            <img src="item-2.png" alt=""/>
         </div>
 
         <div class="description">
-          <span>Maison Margiela</span>
-          <span>Future Sneakers</span>
-          <span>White</span>
+            <span>Maison Margiela</span>
+            <span>Future Sneakers</span>
+            <span>White</span>
         </div>
 
         <div class="quantity">
-          <button class="plus-btn" type="button" name="button">
-            <img src="plus.svg" alt="" />
-          </button>
-          <input type="text" name="name" value="1">
-          <button class="minus-btn" type="button" name="button">
-            <img src="minus.svg" alt="" />
-          </button>
+            <button class="plus-btn" type="button" name="button">
+                <img src="plus.svg" alt=""/>
+            </button>
+            <input type="text" name="name" value="1">
+            <button class="minus-btn" type="button" name="button">
+                <img src="minus.svg" alt=""/>
+            </button>
         </div>
 
         <div class="total-price">$870</div>
-      </div>
+    </div>
 
-      <!-- Product #3 -->
-      <div class="item">
+    <!-- Product #3 -->
+    <div class="item">
         <div class="buttons">
-          <span class="delete-btn"></span>
-          <span class="like-btn"></span>
+            <span class="delete-btn"></span>
+            <span class="like-btn"></span>
         </div>
 
         <div class="image">
-          <img src="item-3.png" alt="" />
+            <img src="item-3.png" alt=""/>
         </div>
 
         <div class="description">
-          <span>Our Legacy</span>
-          <span>Brushed Scarf</span>
-          <span>Brown</span>
+            <span>Our Legacy</span>
+            <span>Brushed Scarf</span>
+            <span>Brown</span>
         </div>
 
         <div class="quantity">
-          <button class="plus-btn" type="button" name="button">
-            <img src="plus.svg" alt="" />
-          </button>
-          <input type="text" name="name" value="1">
-          <button class="minus-btn" type="button" name="button">
-            <img src="minus.svg" alt="" />
-          </button>
+            <button class="plus-btn" type="button" name="button">
+                <img src="plus.svg" alt=""/>
+            </button>
+            <input type="text" name="name" value="1">
+            <button class="minus-btn" type="button" name="button">
+                <img src="minus.svg" alt=""/>
+            </button>
         </div>
 
         <div class="total-price">$349</div>
-      </div>
     </div>
+</div>
 
-    <script type="text/javascript">
-      $('.minus-btn').on('click', function(e) {
-    		e.preventDefault();
-    		var $this = $(this);
-    		var $input = $this.closest('div').find('input');
-    		var value = parseInt($input.val());
+<script type="text/javascript">
+    $('.minus-btn').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $input = $this.closest('div').find('input');
+        var value = parseInt($input.val());
 
-    		if (value > 1) {
-    			value = value - 1;
-    		} else {
-    			value = 0;
-    		}
+        if (value > 1) {
+            value = value - 1;
+        } else {
+            value = 0;
+        }
 
         $input.val(value);
 
-    	});
+    });
 
-    	$('.plus-btn').on('click', function(e) {
-    		e.preventDefault();
-    		var $this = $(this);
-    		var $input = $this.closest('div').find('input');
-    		var value = parseInt($input.val());
+    $('.plus-btn').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $input = $this.closest('div').find('input');
+        var value = parseInt($input.val());
 
-    		if (value < 100) {
-      		value = value + 1;
-    		} else {
-    			value =100;
-    		}
+        if (value < 100) {
+            value = value + 1;
+        } else {
+            value = 100;
+        }
 
-    		$input.val(value);
-    	});
+        $input.val(value);
+    });
 
-      $('.like-btn').on('click', function() {
+    $('.like-btn').on('click', function () {
         $(this).toggleClass('is-active');
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>
