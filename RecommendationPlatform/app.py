@@ -24,5 +24,15 @@ def get_recommendations():
     return jsonify({'items': items})
 
 
+@app.route('/search', methods=['POST'])
+def get_serp():
+    user_imprint = request.args.get('user_imprint')
+    question = request.args.get('request')
+    count = request.args.get('count', 3)
+
+    items = assistant.make_search(user_imprint, question, count)
+    return jsonify({'items': items})
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
