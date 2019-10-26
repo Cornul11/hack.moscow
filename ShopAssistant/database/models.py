@@ -6,7 +6,7 @@ class Users(models.Model):
     password = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
     age = models.PositiveSmallIntegerField()
-    gender = models.BooleanField()
+    gender = models.CharField(max_length=10)
 
 
 class Interests(models.Model):

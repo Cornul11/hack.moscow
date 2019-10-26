@@ -1,0 +1,287 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @import url('https://rsms.me/inter/inter-ui.css');
+
+        ::selection {
+            background: #2D2F36;
+        }
+
+        ::-webkit-selection {
+            background: #2D2F36;
+        }
+
+        ::-moz-selection {
+            background: #2D2F36;
+        }
+
+        body {
+            background: white;
+            font-family: 'Inter UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .page {
+            background: #e2e2e5;
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 40px);
+            position: absolute;
+            place-content: center;
+            width: calc(100% - 40px);
+        }
+
+        @media (max-width: 767px) {
+            .page {
+                height: auto;
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+            }
+        }
+
+        .container {
+            display: flex;
+            height: 650px;
+            margin: 0 auto;
+            width: 940px;
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                flex-direction: column;
+                height: 630px;
+                width: 320px;
+            }
+        }
+
+        .left {
+            background: white;
+            height: calc(100% - 40px);
+            top: 20px;
+            position: relative;
+            width: 50%;
+        }
+
+        @media (max-width: 767px) {
+            .left {
+                height: 100%;
+                left: 20px;
+                width: calc(100% - 40px);
+                max-height: 270px;
+            }
+        }
+
+        .login {
+            font-size: 50px;
+            font-weight: 900;
+            margin: 50px 20px 30px;
+        }
+
+        .eula {
+            color: #999;
+            font-size: 20px;
+            line-height: 1.5;
+            margin: 20px;
+        }
+
+        .right {
+            background: #3d3c48;
+            color: #F1F1F2;
+            position: relative;
+            width: 80%;
+            height: 100%;
+        }
+
+        @media (max-width: 767px) {
+            .right {
+                flex-shrink: 0;
+                height: 100%;
+                width: 100%;
+                max-height: 700px;
+            }
+        }
+
+        svg {
+            position: absolute;
+            width: 320px;
+        }
+
+        path {
+            fill: none;
+            stroke: url(#linearGradient);;
+            stroke-width: 4;
+            stroke-dasharray: 240 1386;
+        }
+
+        .form {
+            margin: 40px;
+            position: absolute;
+        }
+
+        label {
+            color: #c2c2c5;
+            display: block;
+            font-size: 14px;
+            height: 16px;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+
+        input {
+            background: #575667;
+            border-radius: 25px;
+            border: 0;
+            color: #f2f2f2;
+            font-size: 20px;
+            height: 30px;
+            line-height: 30px;
+            outline: none !important;
+            width: 100%;
+        }
+
+        input::-moz-focus-inner {
+            border: 0;
+        }
+
+        #submit {
+            color: #c2c2cc;
+            margin-top: 90px;
+            font-size: 70px;
+        }
+
+        input [type="radio"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+
+            border: 2px solid #999;
+            transition: 0.2s all linear;
+            outline: none;
+            margin-right: 5px;
+
+            position: relative;
+            top: 4px;
+        }
+
+        button {
+            padding: 0;
+            border: none;
+            background: none;
+            background: #3d3c48;
+            color: #d6c5c3;
+            margin-top: 20px;
+            margin-left: 100px;
+            transition: color 500ms;
+            font-size: 18px;
+            font-family: 'Inter UI', sans-serif;
+        }
+
+        #submit:focus {
+            color: #f2f2f2;
+        }
+
+        #submit:active {
+            color: #d0d0d2;
+        }
+
+    </style>
+    <script>
+        var current = null;
+        document.querySelector('#email').addEventListener('focus', function (e) {
+            if (current) current.pause();
+            current = anime({
+                targets: 'path',
+                strokeDashoffset: {
+                    value: 0,
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                },
+                strokeDasharray: {
+                    value: '240 1386',
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                }
+            });
+        });
+        document.querySelector('#password').addEventListener('focus', function (e) {
+            if (current) current.pause();
+            current = anime({
+                targets: 'path',
+                strokeDashoffset: {
+                    value: -336,
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                },
+                strokeDasharray: {
+                    value: '240 1386',
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                }
+            });
+        });
+        document.querySelector('#submit').addEventListener('focus', function (e) {
+            if (current) current.pause();
+            current = anime({
+                targets: 'path',
+                strokeDashoffset: {
+                    value: -730,
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                },
+                strokeDasharray: {
+                    value: '530 1386',
+                    duration: 700,
+                    easing: 'easeOutQuart'
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="page">
+    <div class="container">
+        <div class="left">
+            <div class="login">Shop Assistant</div>
+            <div class="eula">Welcome, please, sign up</div>
+        </div>
+        <div class="right">
+            <div class="form">
+                <form method="post" action="/register" class="form">
+                    {% csrf_token %}
+                    <label for="name">Your name</label>
+                    <input type="name" id="name" name ="name">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                    <label for="age">Your age</label>
+                    <input type="age" id="age" name="age">
+                    <label for="gender">Your gender</label>
+                    <input type="radio" style=" border-radius: 50%;
+                           width: 16px;
+                           height: 16px;" name="gender" value="male" checked=""> Male<br>
+                    <input type="radio" style=" border-radius: 50%;
+                           width: 16px;
+                           height: 16px;" name="gender" value="female"> Female<br>
+                    <input type="radio" style=" border-radius: 50%;
+                           width: 16px;
+                           height: 16px;" name="gender" value="other"> Other<br>
+                    <label for="password">Create password</label>
+                    <input type="password" id="password" name="password">
+
+                    <input type="submit" style=" background:transparent;font-size: 35px;" id="submit" value="Submit">
+                </form>
+                <button onclick="window.location.href='login.html'">Log in</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
