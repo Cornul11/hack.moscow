@@ -1,15 +1,25 @@
 from django.shortcuts import render, redirect
 from database.models import Users, UsersInterests
 
+
 def register(request):
-    user = Users.objects.create(name=request.POST['name'], age=request.POST['age'], password=request.POST['password'],
-                               email=request.POST['email'], gender=request.POST['gender'])
-    user.save()
-    for i in request.POST['interests']:
-        inter = UsersInterests.objects.create(email=request.POST['email'], interest=i)
-        inter.save()
+    try:
+        user = Users.objects.create(name='grigor', age=20,
+                                    password='234',
+                                    email='grigor777@yandex.ru', gender=True)
+
+        # user = Users.objects.create(name=request.POST['name'], age=request.POST['age'],
+        #                             password=request.POST['password'],
+        #                            email=request.POST['email'], gender=request.POST['gender'])
+        user.save()
+        # for i in request.POST['interests']:
+        #     inter = UsersInterests.objects.create(email=request.POST['email'], interest=i)
+        #     inter.save()
+    except:
+        user = Users.objects.filter(email='grigor777@yandex.ru').first()
+    print(user.email)
     request.session['email'] = user.email
-    return redirect('/success')
+    return redirect('geostatus/')
 
 
 def login(request):
