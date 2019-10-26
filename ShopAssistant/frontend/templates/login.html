@@ -251,15 +251,16 @@
         </div>
         <div class="right">
             <div class="form">
-                <form method="GET" action="/main.html">
+                <form method="post" action="/login" class="form">
+                    {% csrf_token %}
                     <label for="email">Email</label>
-                    <input type="email" id="email">
+                    <input type="email" id="email" name="email">
                     <label for="password">Password</label>
-                    <input type="password" id="password">
+                    <input type="password" id="password" name="password">
 
                     <input type="submit" style=" background:transparent; font-size: 35px;" id="submit" value="Submit">
                 </form>
-                <button onclick="window.location.href='signup.html'">Sign up</button>
+                <button onclick="window.location.href='/gosignup'">Sign up</button>
             </div>
 
         </div>

@@ -1,0 +1,2 @@
+venue_id,id,owner_id,address,groundLevel,category,phone_number,email,name,bb,centroid
+DM_20518,DM_20518,DM_Q4,",RUS,,,Москва,RU,Моховая улица,,,125009,Okhotniy Ryad,,,",1,shopping,+7 (495) 7378449,http://www.ox-r.ru,Okhotniy Ryad,"[[55.756572160727295, 37.61263326481094], [55.75430461704859, 37.61602984876706]]","[55.755438349982725, 37.61433149999557]"
