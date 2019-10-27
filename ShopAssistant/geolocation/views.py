@@ -38,9 +38,9 @@ def index(request):
             content.append(i.interest.name)
         fav_shops = []
         for i in Shops.objects.filter(email=request.session['email']):
-            if not i.start:
+            if not i.name:
                 continue
-            fav_shops.append(i.start)
+            fav_shops.append(i.name)
 
 
         url = 'http://7ee50b98.ngrok.io/'

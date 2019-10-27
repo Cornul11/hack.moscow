@@ -155,6 +155,7 @@ class Assistant(object):
                     break
         elapsed_time = time.time() - start_time
         logging.error('make_recommendation; time: {}'.format(elapsed_time))
+        logging.error('MAKE_RECOMMENDATION: {}'.format(elapsed_time))
         return [shop.form_json() for shop in resulted_shops.values()]
 
     def make_search(self, user_imprint, question, count=3):
