@@ -636,7 +636,7 @@
 
     <script>
         let data;
-        axios.get('http://localhost:8000/geostatus/post/')
+        axios.get('http://57aa68f1.ngrok.io/geostatus/post/')
             .then(function (response) {
                 // handle success
                 data = response.data.items;
@@ -663,7 +663,7 @@
                 table_body += '<tr>';
                 table_body += '<td>';
                 table_body += data[k]["description"] + '<br />';
-                table_body += '<a href="http://localhost:8000/recommendations/maps/' + data[k]["location"].split(', ')[0].replace('[', '') + '&' + data[k]["location"].split(', ')[1].replace(']', '') + '">view map</a>';
+                table_body += '<a href="http://57aa68f1.ngrok.io/recommendations/maps/' + data[k]["location"].split(', ')[0].replace('[', '') + '&' + data[k]["location"].split(', ')[1].replace(']', '') + '">view map</a>';
                 table_body += '</td>';
                 table_body += '</tr>';
                 table_body += '</tbody></table>';
