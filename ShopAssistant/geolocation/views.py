@@ -26,8 +26,6 @@ locationtracing = {}
 @csrf_exempt
 def index(request):
     if request.method == 'GET':
-        print('search' in request.session)
-        print(request.session.get('search'))
         if 'search' in request.session:
             search_response = request.session.get('search_response')
             del request.session['search']
