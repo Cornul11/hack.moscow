@@ -636,7 +636,7 @@
 
     <script>
         let data;
-        axios.get('http://57aa68f1.ngrok.io/geostatus/post/')
+        axios.get('http://localhost:8000/geostatus/post/')
             .then(function (response) {
                 // handle success
                 data = response.data.items;
@@ -662,10 +662,8 @@
                 table_body += '</th></tr></thead><tbody>';
                 table_body += '<tr>';
                 table_body += '<td>';
-                table_body += data[k]["description"][0] + ' ';
-                table_body += data[k]["description"][1] + '</br>';
-                table_body += data[k]["description"][2] + '</br>';
-                table_body += '<a href="http://localhost:8000/recommendations/maps/' + data[k]["location"][0] + '">view map</a>';
+                table_body += data[k]["description"] + '<br />';
+                table_body += '<a href="http://localhost:8000/recommendations/maps/' + data[k]["location"].split(', ')[0].replace('[', '') + '&' + data[k]["location"].split(', ')[1].replace(']', '') + '">view map</a>';
                 table_body += '</td>';
                 table_body += '</tr>';
                 table_body += '</tbody></table>';
@@ -726,10 +724,11 @@
     </script>-->
 
 
+
     <div id="tableDiv" class="table table-dark table-hover" style="margin-top: 40px">
         Table will be generated here.
     </div>
-</div>
+{#</div>#}
 <p id="p1"></p>
 </body>
 </html>
