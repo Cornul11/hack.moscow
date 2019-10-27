@@ -1,13 +1,16 @@
 import time
+
 import requests
-from geopy import distance
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
-from database.models import Shops, Users, UsersInterests
 from django.contrib.sessions.backends.db import SessionStore
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from geopy import distance
+
+from database.models import Shops, Users, UsersInterests
 
 locationtracing = {}
+
+
 # DEBUG = False
 #
 # if DEBUG:
@@ -57,7 +60,6 @@ def index(request):
                                        'start_time': time.time(), 'name': str(lat) + str(lon)}
     dist = distance.geodesic((lat, lon), (
         locationtracing[user.email]['lat'], locationtracing[user.email]['lon'])).m
-
 
     if dist > 0.5:
 
