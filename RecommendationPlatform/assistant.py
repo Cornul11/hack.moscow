@@ -117,6 +117,7 @@ class Assistant(object):
         ) / (len(content) + len(fav_shops))
         elapsed_time = time.time() - start_time
         logging.error('form_user_imprint; time: {}'.format(elapsed_time))
+        logging.error('FAV SHOPS: {}'.format(fav_shops))
         return results
 
     def _compute_closeness(self, rhs, lhs):
