@@ -17,35 +17,27 @@
         getData();
 
         function getData() {
-            axios.get('http://dafbcf60.ngrok.io/geostatus/post/')
+            axios.get('http://localhost:8000/geostatus/post/')
                 .then(function (response) {
                     // handle success
                     data = response.data.items;
                     console.log('kek', response.data.items);
-                    var k = 0;
-                    var table_body = '';
+                    let k = 0;
+                    let table_body = '';
 
+                    table_body += '<table style="overflow-y: scroll; -webkit-overflow-scrolling: touch;"class="table table-dark table-striped table-responsive" width="100%"><thead><tr><th></th></tr></thead><tbody>';
                     for (k in data) {
-                        table_body += '<table style="overflow-y: scroll; -webkit-overflow-scrolling: touch;"class="table table-dark table-striped table-responsive" width="100%"><thead><tr><th>';
-                        table_body += data[k]["name"];
-                        table_body += '</th></tr></thead><tbody>';
                         table_body += '<tr>';
-                        table_body += '<td>';
-                        table_body += data[k]["description"] + '<br />';
-                        table_body += '<a href="http://57aa68f1.ngrok.io/recommendations/maps/' + data[k]["location"].split(', ')[0].replace('[', '') + '&' + data[k]["location"].split(', ')[1].replace(']', '') + '">view map</a>';
-                        table_body += '</td>';
+                        table_body += '<td>' + data[k]["name"] + '</td>';
                         table_body += '</tr>';
-                        table_body += '</tbody></table>';
+                        table_body += '<tr>';
+                        table_body += '<td>' + data[k]["description"] + '</td>';
+                        table_body += '</tr>';
+                        table_body += '<tr><td><a href="http://57aa68f1.ngrok.io/recommendations/maps/' + data[k]["location"].split(', ')[0].replace('[', '') + '&' + data[k]["location"].split(', ')[1].replace(']', '') + '">view map</a></td>';
+                        table_body += '</tr>';
                     }
+                    table_body += '</tbody></table>';
                     $('#tableDiv').html(table_body);
-                    $("#search").on("keyup", function () {
-                        var value = $(this).val().toLowerCase();
-                        $("table tr").filter(function (index) {
-                            if (index > 0) {
-                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                            }
-                        });
-                    });
                 })
                 .catch(function (error) {
                     // handle error
@@ -62,7 +54,7 @@
     </script>
 </head>
 <body style="background: #1d2124">
-<div id="tableDiv" class="table table-dark table-hover" style="margin-top: 40px">
+<div id="tableDiv" class="table table-dark" style="margin-top: 20px">
     Table will be generated here.
 </div>
 <p id="p1"></p>
