@@ -1,6 +1,11 @@
 import requests
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.contrib.sessions.backends.db import SessionStore
+from django.shortcuts import render, redirect
+from database.models import Users, UsersInterests, Interests
+import requests
+from django.http import JsonResponse
 
 
 def index(request):
@@ -22,15 +27,15 @@ def geoposition(request):
 
 def search(request):
     if request.method == "GET":
-        url = 'https://e5d6c151.ngrok.io/search'
+        url = 'https://7ee50b98.ngrok.io/search'
         data = {
-            'user_imprint': request.session['user_imprint'],
-            'request': request.GET['text'],
+            'user_imprint': request.session['user_imprint'].get('user_imprint', []),
+            'request': request.GET.get('search', ''),
         }
-        response = requests.post(url, json=data,
-                                 headers={'Content-type': 'application/json'})
-        return JsonResponse(response.json() if response else {})
-
+        response = requests.post(url, json=data, headers={'Content-type': 'application/json'})
+        request.session['search'] = data['request']
+        request.session['search_response'] = response.json() if response else {}
+        return redirect('/geostatus/recommendations/')
 
 # Create your views here.
 

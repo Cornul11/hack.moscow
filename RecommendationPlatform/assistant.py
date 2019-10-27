@@ -160,7 +160,9 @@ class Assistant(object):
         alpha = 0.7
         words = question.lower().split(' ')
         qvector = self._get_vector(words)
-        vec = qvector * alpha + user_imprint * (1. - alpha)
+        vec = qvector
+        if len(user_imprint) > 0:
+            vec = vec * alpha + np.array(user_imprint) * (1. - alpha)
         return self.make_recommendation(vec, banned_shops=[], count=count)
 
 

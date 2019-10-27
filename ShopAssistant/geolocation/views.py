@@ -25,8 +25,14 @@ locationtracing = {}
 
 @csrf_exempt
 def index(request):
-
     if request.method == 'GET':
+        print('search' in request.session)
+        print(request.session.get('search'))
+        if 'search' in request.session:
+            search_response = request.session.get('search_response')
+            del request.session['search']
+            return JsonResponse(search_response if search_response else {})
+
         content = []
         for i in UsersInterests.objects.filter(email=request.session['email']):
             content.append(i.interest.name)
@@ -37,7 +43,7 @@ def index(request):
             fav_shops.append(i.start)
 
 
-        url = 'https://7ee50b98.ngrok.io/'
+        url = 'http://7ee50b98.ngrok.io/'
         data = {
             'content': content,
             'fav_shops': fav_shops,
@@ -47,9 +53,8 @@ def index(request):
         request.session['user_imprint'] = response.json() if response else {}
         response = requests.post(url + 'recommendation', json=request.session['user_imprint'],
                                  headers={'Content-type': 'application/json'})
-        print('response', response)
-
         return JsonResponse(response.json() if response else {})
+
     path = request.get_full_path()
     path = path.replace('/geostatus/post/?', '')
     path = path.split('&')
