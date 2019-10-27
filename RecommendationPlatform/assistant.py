@@ -155,7 +155,7 @@ class Assistant(object):
                     break
         elapsed_time = time.time() - start_time
         logging.error('make_recommendation; time: {}'.format(elapsed_time))
-        logging.error('MAKE_RECOMMENDATION: {}'.format(elapsed_time))
+        logging.error('RESULTS: {}'.format([shop.name for shop in resulted_shops.values()]))
         return [shop.form_json() for shop in resulted_shops.values()]
 
     def make_search(self, user_imprint, question, count=3):
@@ -165,7 +165,9 @@ class Assistant(object):
         vec = qvector
         if len(user_imprint) > 0:
             vec = vec * alpha + np.array(user_imprint) * (1. - alpha)
-        return self.make_recommendation(vec, banned_shops=[], count=count)
+        results = self.make_recommendation(vec, banned_shops=[], count=count)
+        logging.error('RESULTS: {}'.format([result.name for result in results]))
+        return results
 
 
 if __name__ == '__main__':
