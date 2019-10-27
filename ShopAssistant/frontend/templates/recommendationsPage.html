@@ -636,7 +636,7 @@
 
     <script>
         let data;
-        axios.get('http://57aa68f1.ngrok.io/geostatus/post/')
+        axios.get('http://localhost:8000/geostatus/post/')
             .then(function (response) {
                 // handle success
                 data = response.data.items;
@@ -662,10 +662,8 @@
                 table_body += '</th></tr></thead><tbody>';
                 table_body += '<tr>';
                 table_body += '<td>';
-                table_body += data[k]["description"][0] + ' ';
-                table_body += data[k]["description"][1] + '</br>';
-                table_body += data[k]["description"][2] + '</br>';
-                table_body += '<a href="http://localhost:8000/recommendations/maps/' + data[k]["location"][0] + '">view map</a>';
+                table_body += data[k]["description"] + '<br />';
+                table_body += '<a href="http://localhost:8000/recommendations/maps/' + data[k]["location"].split(', ')[0].replace('[', '') + '&' + data[k]["location"].split(', ')[1].replace(']', '') + '">view map</a>';
                 table_body += '</td>';
                 table_body += '</tr>';
                 table_body += '</tbody></table>';
@@ -683,53 +681,53 @@
     </script>
 </head>
 <body style="background: #1d2124">
-<div style="margin-top: -150px;{% comment %}margin-left: 200px; margin-right: 250px;{% endcomment %} background: #1d2124;">
-    <div class="s128">
-        <form>
-            <div class="inner-form">
-                <div class="row">
-                    <div class="input-field first" id="first">
-                        <input class="input" id="inputFocus" type="text" placeholder="Keyword">
-                        <button class="clear" id="clear">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <script>
-        var btnDelete = document.getElementById('clear');
-        var inputFocus = document.getElementById('inputFocus');
-        //- btnDelete.on('click', function(e) {
-        //-   e.preventDefault();
-        //-   inputFocus.classList.add('isFocus')
-        //- })
-        //- inputFocus.addEventListener('click', function() {
-        //-   this.classList.add('isFocus')
-        //- })
-        btnDelete.addEventListener('click', function (e) {
-            e.preventDefault();
-            inputFocus.value = ''
-        })
-        document.addEventListener('click', function (e) {
-            if (document.getElementById('first').contains(e.target)) {
-                inputFocus.classList.add('isFocus')
-            } else {
-                // Clicked outside the box
-                inputFocus.classList.remove('isFocus')
-            }
-        });
-
-    </script>
+{#<div style="margin-top: -150px;margin-left: 200px; margin-right: 250px; background: #1d2124;">#}
+{#    <div class="s128">#}
+{#        <form>#}
+{#            <div class="inner-form">#}
+{#                <div class="row">#}
+{#                    <div class="input-field first" id="first">#}
+{#                        <input class="input" id="inputFocus" type="text" placeholder="Keyword">#}
+{#                        <button class="clear" id="clear">#}
+{#                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">#}
+{#                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>#}
+{#                            </svg>#}
+{#                        </button>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{#    <script>#}
+{#        var btnDelete = document.getElementById('clear');#}
+{#        var inputFocus = document.getElementById('inputFocus');#}
+{#        //- btnDelete.on('click', function(e) {#}
+{#        //-   e.preventDefault();#}
+{#        //-   inputFocus.classList.add('isFocus')#}
+{#        //- })#}
+{#        //- inputFocus.addEventListener('click', function() {#}
+{#        //-   this.classList.add('isFocus')#}
+{#        //- })#}
+{#        btnDelete.addEventListener('click', function (e) {#}
+{#            e.preventDefault();#}
+{#            inputFocus.value = ''#}
+{#        })#}
+{#        document.addEventListener('click', function (e) {#}
+{#            if (document.getElementById('first').contains(e.target)) {#}
+{#                inputFocus.classList.add('isFocus')#}
+{#            } else {#}
+{#                // Clicked outside the box#}
+{#                inputFocus.classList.remove('isFocus')#}
+{#            }#}
+{#        });#}
+{##}
+{#    </script>#}
 
 
     <div id="tableDiv" class="table table-dark table-hover" style="margin-top: 40px">
         Table will be generated here.
     </div>
-</div>
+{#</div>#}
 <p id="p1"></p>
 </body>
 </html>
