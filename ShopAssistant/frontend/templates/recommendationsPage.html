@@ -635,10 +635,12 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
+        let data;
         axios.get('http://57aa68f1.ngrok.io/geostatus/post/')
             .then(function (response) {
                 // handle success
-                console.log('kek', response);
+                data = response.data.items;
+                console.log('kek', response.data.items);
             })
             .catch(function (error) {
                 // handle error
@@ -649,10 +651,9 @@
             });
         //JSON Object End................
         //Create table and fetch data from JSON Object.
-        window.addEventListener("load", function () {
+        window.setTimeout(function () {
 
             var k = 0;
-            var l = 0;
             var table_body = '';
 
             for (k in data) {
@@ -662,7 +663,7 @@
                 table_body += '<tr>';
                 table_body += '<td>';
                 table_body += data[k]["description"][0] + ' ';
-                table_body += data[k]["description"][1] + ' </br>';
+                table_body += data[k]["description"][1] + '</br>';
                 table_body += data[k]["description"][2] + '</br>';
                 table_body += '<a href="http://localhost:8000/recommendations/maps/' + data[k]["location"][0] + '">view map</a>';
                 table_body += '</td>';
@@ -678,8 +679,7 @@
                     }
                 });
             });
-        })
-        ;
+        }, 5000);
     </script>
 </head>
 <body style="background: #1d2124">
