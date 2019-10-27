@@ -34,7 +34,7 @@
                         table_body += '<tr>';
                         table_body += '<td>' + data[k]["description"].split(',').slice(0, 5) + (data[k]['description'].length > 5 ? ', ...' : ' ') + '</td>';
                         table_body += '</tr>';
-                        table_body += '<tr><td><a class="btn btn-secondary btn-small active" role="button" aria-pressed="true" href="http://57aa68f1.ngrok.io/recommendations/maps/' + data[k]["location"].split(', ')[0].replace('[', '') + '&' + data[k]["location"].split(', ')[1].replace(']', '') + '">view map</a></td>';
+                        table_body += '<tr><td><a class="btn btn-secondary btn-small active" role="button" aria-pressed="true" href="http://' + window.location.hostname + ':8000/geostatus/map/' + data[k]["location"].split(', ')[0].replace('[', '') + '&' + data[k]["location"].split(', ')[1].replace(']', '') + '">view map</a></td>';
                         table_body += '</tr>';
                     }
                     table_body += '</tbody></table>';

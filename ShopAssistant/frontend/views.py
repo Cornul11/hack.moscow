@@ -1,16 +1,23 @@
+import requests
+from django.http import JsonResponse
 from django.shortcuts import render
-from django.contrib.sessions.backends.db import SessionStore
-from django.shortcuts import render, redirect
-from database.models import Users, UsersInterests, Interests
 
 
 def index(request):
     return render(request, 'login.html')
 
 
+def map(request):
+    lat = request.GET['lat']
+    lon = request.GET['lon']
+    originalLat = request.GET['x']
+    originalLon = request.GET['y']
+    print(lat, lon, originalLat, originalLon)
+    return render(request, 'map.html')
+
+
 def geoposition(request):
-    return render(request, 'collector.html'
-                           '')
+    return render(request, 'collector.html')
 
 
 def search(request):

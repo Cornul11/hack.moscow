@@ -37,7 +37,7 @@ def index(request):
             fav_shops.append(i.start)
 
 
-        url = 'https://e5d6c151.ngrok.io/'
+        url = 'https://7ee50b98.ngrok.io/'
         data = {
             'content': content,
             'fav_shops': fav_shops,
