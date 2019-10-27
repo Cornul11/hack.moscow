@@ -7,4 +7,5 @@ urlpatterns = [
     path('recommendations/', views.recommendations),
     path('signup/', views.index),
     path('post/', include('geolocation.urls')),
+    
 ]
