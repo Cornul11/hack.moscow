@@ -30,7 +30,7 @@ class LongTermRecommendations(object):
 
     def find_closest(self, vec):
         distances = []
-        for shop, vec2 in shop_vecs.items():
+        for shop, vec2 in self.shop_vecs.items():
             distances.append((((vec - vec2) ** 2).sum(), shop))
         return sorted(distances)[1]
 
