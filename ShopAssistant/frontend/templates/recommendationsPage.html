@@ -25,15 +25,16 @@
                     let k = 0;
                     let table_body = '';
 
-                    table_body += '<table style="overflow-y: scroll; -webkit-overflow-scrolling: touch;"class="table table-dark table-striped table-responsive" width="100%"><thead><tr><th></th></tr></thead><tbody>';
+                    table_body += '<table style="overflow-y: scroll; -webkit-overflow-scrolling: touch;"class="table table-dark table-striped" width="100%"><thead><tr><th></th></tr></thead><tbody>';
                     for (k in data) {
                         table_body += '<tr>';
-                        table_body += '<td>' + data[k]["name"] + '</td>';
+                        table_body += '<td><b>' + data[k]["name"] + '</b> [' +
+                            data[k]['category'] + ', ' + data[k]['level_description'] + ']</td>';
                         table_body += '</tr>';
                         table_body += '<tr>';
-                        table_body += '<td>' + data[k]["description"] + '</td>';
+                        table_body += '<td>' + data[k]["description"].split(',').slice(0, 5) + (data[k]['description'].length > 5 ? ', ...' : ' ') + '</td>';
                         table_body += '</tr>';
-                        table_body += '<tr><td><a href="http://57aa68f1.ngrok.io/recommendations/maps/' + data[k]["location"].split(', ')[0].replace('[', '') + '&' + data[k]["location"].split(', ')[1].replace(']', '') + '">view map</a></td>';
+                        table_body += '<tr><td><a class="btn btn-secondary btn-small active" role="button" aria-pressed="true" href="http://57aa68f1.ngrok.io/recommendations/maps/' + data[k]["location"].split(', ')[0].replace('[', '') + '&' + data[k]["location"].split(', ')[1].replace(']', '') + '">view map</a></td>';
                         table_body += '</tr>';
                     }
                     table_body += '</tbody></table>';
