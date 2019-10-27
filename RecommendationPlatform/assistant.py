@@ -7,7 +7,7 @@ import logging
 import random
 import time
 
-DEBUG = True
+DEBUG = False
 
 
 class Shop(object):
@@ -111,10 +111,12 @@ class Assistant(object):
         # easter egg :)
         content = ['coffee'] if len(content) == 0 else content
         start_time = time.time()
+        content_mul = 1.
+        shops_mul = 1.
         results = np.sum(
-            [self._get_vector(word) for word in content] +
-            [self.shops_features[shop] for shop in fav_shops], axis=0
-        ) / (len(content) + len(fav_shops))
+            [self._get_vector(word) * content_mul for word in content] +
+            [self.shops_features[shop] * shops_mul for shop in fav_shops], axis=0
+        ) / (len(content) * content_mul + len(fav_shops) * shops_mul)
         elapsed_time = time.time() - start_time
         logging.error('form_user_imprint; time: {}'.format(elapsed_time))
         logging.error('FAV SHOPS: {}'.format(fav_shops))
