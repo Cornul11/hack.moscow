@@ -168,7 +168,7 @@ class Assistant(object):
         if len(user_imprint) > 0:
             vec = vec * alpha + np.array(user_imprint) * (1. - alpha)
         results = self.make_recommendation(vec, banned_shops=[], count=count)
-        logging.error('RESULTS: {}'.format([result.name for result in results]))
+        logging.error('RESULTS: {}'.format([result['name'] for result in results]))
         return results
 
 
