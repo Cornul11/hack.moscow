@@ -7,6 +7,8 @@ import logging
 import random
 import time
 
+DEBUG = True
+
 
 class Shop(object):
     def __init__(self, row):
@@ -47,7 +49,7 @@ class Assistant(object):
 
     def __init__(self, update_shops=True):
         self._w2v_size = 300
-        self.shops_imprints = []
+        self.shops_imprints = []  # (key_vector, shop)
         self.shops_features = {}
         self._load_word2vec_model()
         self._get_shops_imprints(update_shops)
@@ -65,13 +67,12 @@ class Assistant(object):
             self.shops_features[shop.name] = shop_imprint
 
     def _load_word2vec_model(self):
-        debug = True
         start_time = time.time()
 
         def get_coefs(word, *arr):
             return word, np.asarray(arr, dtype='float32')
 
-        if not debug:
+        if not DEBUG:
             with open(self.W2V) as f:
                 self._word2vec = dict(get_coefs(*line.strip().split(' ')) for line in f)
         else:
